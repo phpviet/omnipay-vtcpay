@@ -14,26 +14,12 @@ namespace Omnipay\VTCPay\Message\Concerns;
 trait RequestEndpoint
 {
     /**
-     * Đường dẫn kết nối đến VTCPay để test.
-     *
-     * @var string
-     */
-    protected $testEndPoint;
-
-    /**
-     * Đường dẫn kết nối đến VTCPay ở môi trường production.
-     *
-     * @var string
-     */
-    protected $productionEndpoint;
-
-    /**
      * Trả về url kết nối MoMo.
      *
      * @return string
      */
     protected function getEndpoint(): string
     {
-        return $this->getTestMode() ? $this->testEndPoint : $this->productionEndpoint;
+        return $this->getTestMode() ? 'http://alpha1.vtcpay.vn/portalgateway' : 'https://vtcpay.vn/bank-gateway';
     }
 }

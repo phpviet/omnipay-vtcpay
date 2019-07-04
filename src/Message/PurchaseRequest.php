@@ -20,16 +20,6 @@ class PurchaseRequest extends AbstractRequest
     /**
      * {@inheritdoc}
      */
-    protected $testEndPoint = 'https://vtcpay.vn/bank-gateway/checkout.html';
-
-    /**
-     * {@inheritdoc}
-     */
-    protected $productionEndpoint = 'http://alpha1.vtcpay.vn/portalgateway/checkout.html';
-
-    /**
-     * {@inheritdoc}
-     */
     public function initialize(array $parameters = [])
     {
         parent::initialize($parameters);
@@ -59,7 +49,7 @@ class PurchaseRequest extends AbstractRequest
      */
     public function sendData($data): PurchaseResponse
     {
-        $redirectUrl = $this->getEndpoint().'?'.http_build_query($data);
+        $redirectUrl = $this->getEndpoint().'/checkout.html?'.http_build_query($data);
 
         return $this->response = new PurchaseResponse($this, $data, $redirectUrl);
     }
