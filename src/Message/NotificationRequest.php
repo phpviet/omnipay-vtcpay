@@ -31,7 +31,11 @@ class NotificationRequest extends AbstractIncomingRequest
     public function sendData($data): IncomingResponse
     {
         $signature = $data['signature'];
-        $data = $data['data'];
+        $dataNormalized = explode('|', $data['data']);
+        [$amount, $message, $payment_type, $reference_number, $status, $trans_ref_no, $website_id] = $dataNormalized;
+        $data = compact(
+            'amount', 'message', 'payment_type', 'reference_number', 'status', 'trans_ref_no', 'website_id'
+        );
         $data['signature'] = $signature;
 
         return parent::sendData($data);

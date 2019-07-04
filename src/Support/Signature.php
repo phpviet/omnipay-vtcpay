@@ -39,8 +39,7 @@ class Signature
     public function generate(array $data): string
     {
         ksort($data);
-        $data[] = $this->securityCode;
-        $dataSign = implode('|', $data);
+        $dataSign = implode('|', $data).'|'.$this->securityCode;
 
         return strtoupper(hash('sha256', $dataSign));
     }

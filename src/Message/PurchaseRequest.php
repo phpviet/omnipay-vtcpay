@@ -37,8 +37,11 @@ class PurchaseRequest extends AbstractRequest
      */
     public function getData(): array
     {
-        $data = $this->getParameters();
         $this->validate('currency', 'receiver_account', 'reference_number', 'website_id', 'amount');
+        $validParameters = $this->getSignatureParameters();
+        $data = array_filter($this->getParameters(), function ($parameter) use ($validParameters) {
+            return in_array($parameter, $validParameters, true);
+        }, ARRAY_FILTER_USE_KEY);
         $data['signature'] = $this->generateSignature();
 
         return $data;
@@ -52,6 +55,28 @@ class PurchaseRequest extends AbstractRequest
         $redirectUrl = $this->getEndpoint().'/checkout.html?'.http_build_query($data);
 
         return $this->response = new PurchaseResponse($this, $data, $redirectUrl);
+    }
+
+    /**
+     * Trả về tài khoản nhận tiền.
+     *
+     * @return null|string
+     */
+    public function getReceiverAccount(): ?string
+    {
+        return $this->getParameter('receiver_account');
+    }
+
+    /**
+     * Thiết lập tài khoản nhận tiền.
+     *
+     * @param  null|string  $account
+     *
+     * @return $this
+     */
+    public function setReceiverAccount(?string $account)
+    {
+        return $this->setParameter('receiver_account', $account);
     }
 
     /**
@@ -260,7 +285,6 @@ class PurchaseRequest extends AbstractRequest
      * Thiết lập tỉnh, thành phố giao hàng.
      *
      * @param  null|string  $city
-     *
      * @return $this
      */
     public function setBillToAddressCity(?string $city)
@@ -303,11 +327,21 @@ class PurchaseRequest extends AbstractRequest
      * Thiết lập số điện thoại người mua hàng.
      *
      * @param  null|string  $number
-     *
      * @return $this
      */
     public function setBillToPhone(?string $number)
     {
         return $this->setParameter('bill_to_phone', $number);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function getSignatureParameters(): array
+    {
+        $parameters = $this->getParameters();
+        unset($parameters['testMode'], $parameters['security_code']);
+
+        return array_keys($parameters);
     }
 }

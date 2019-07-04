@@ -15,28 +15,6 @@ namespace Omnipay\VTCPay\Concerns;
 trait Parameters
 {
     /**
-     * Trả về tài khoản nhận tiền.
-     *
-     * @return null|string
-     */
-    public function getReceiverAccount(): ?string
-    {
-        return $this->getParameter('receiver_account');
-    }
-
-    /**
-     * Thiết lập tài khoản nhận tiền.
-     *
-     * @param  null|string  $account
-     *
-     * @return $this
-     */
-    public function setReceiverAccount(?string $account)
-    {
-        return $this->setParameter('receiver_account', $account);
-    }
-
-    /**
      * Trả về mã website.
      *
      * @return null|string

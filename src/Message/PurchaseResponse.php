@@ -47,6 +47,14 @@ class PurchaseResponse extends Response implements RedirectResponseInterface
     /**
      * {@inheritdoc}
      */
+    public function isRedirect(): bool
+    {
+        return true;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function getRedirectUrl(): string
     {
         return $this->redirectUrl;

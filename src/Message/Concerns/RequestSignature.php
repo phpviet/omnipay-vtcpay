@@ -22,12 +22,17 @@ trait RequestSignature
      */
     protected function generateSignature(): string
     {
+        $data = [];
         $signature = new Signature(
             $this->getSecurityCode()
         );
 
-        return $signature->generate(
-            $this->getParameters()
-        );
+        foreach ($this->getSignatureParameters() as $parameter) {
+            $data[$parameter] = $this->getParameter($parameter);
+        }
+
+        return $signature->generate($data);
     }
+
+    abstract protected function getSignatureParameters(): array;
 }
