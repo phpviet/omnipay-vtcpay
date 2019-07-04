@@ -81,7 +81,7 @@ class PurchaseRequest extends AbstractRequest
 
     /**
      * Trả về mã đơn hàng.
-     * Ánh xạ của [[getTransactionId()]]
+     * Ánh xạ của [[getTransactionId()]].
      *
      * @return null|string
      * @see getTransactionId
@@ -93,7 +93,7 @@ class PurchaseRequest extends AbstractRequest
 
     /**
      * Thiết lập mã đơn hàng.
-     * Ánh xạ của [[setTransactionId()]]
+     * Ánh xạ của [[setTransactionId()]].
      *
      * @param  null|string  $number
      * @return $this
@@ -122,7 +122,7 @@ class PurchaseRequest extends AbstractRequest
 
     /**
      * Get value of the url_return parameter
-     * Ánh xạ của [[getReturnUrl()]]
+     * Ánh xạ của [[getReturnUrl()]].
      *
      * @return null|string
      * @see getReturnUrl
@@ -134,7 +134,7 @@ class PurchaseRequest extends AbstractRequest
 
     /**
      * Set value of the url_return parameter
-     * Ánh xạ của [[setReturnUrl()]]
+     * Ánh xạ của [[setReturnUrl()]].
      *
      * @param  string  $value
      * @return $this
