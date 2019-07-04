@@ -18,16 +18,16 @@ class Signature
      *
      * @var string
      */
-    protected $secureCode;
+    protected $securityCode;
 
     /**
      * Khởi tạo đối tượng Signature.
      *
-     * @param  string  $secureCode
+     * @param  string  $securityCode
      */
-    public function __construct(string $secureCode)
+    public function __construct(string $securityCode)
     {
-        $this->secureCode = $secureCode;
+        $this->securityCode = $securityCode;
     }
 
     /**
@@ -39,7 +39,7 @@ class Signature
     public function generate(array $data): string
     {
         ksort($data);
-        $data[] = $this->secureCode;
+        $data[] = $this->securityCode;
         $dataSign = implode('|', $data);
 
         return strtoupper(hash('sha256', $dataSign));
