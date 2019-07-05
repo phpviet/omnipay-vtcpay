@@ -16,7 +16,7 @@ use Omnipay\VTCPay\Support\Signature;
 trait RequestSignature
 {
     /**
-     * Trả về chữ ký điện tử gửi đến OnePay dựa theo [[getSignatureParameters()]].
+     * Trả về chữ ký điện tử gửi đến VTCPay dựa theo [[getSignatureParameters()]].
      *
      * @return string
      */

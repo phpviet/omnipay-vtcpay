@@ -14,7 +14,7 @@ namespace Omnipay\VTCPay\Message\Concerns;
 trait RequestEndpoint
 {
     /**
-     * Trả về url kết nối MoMo.
+     * Trả về url kết nối VTCPay.
      *
      * @return string
      */

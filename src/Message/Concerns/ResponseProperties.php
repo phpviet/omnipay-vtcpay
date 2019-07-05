@@ -14,7 +14,7 @@ namespace Omnipay\VTCPay\Message\Concerns;
 trait ResponseProperties
 {
     /**
-     * Phương thức hổ trợ tạo các thuộc tính của đối tượng từ dữ liệu gửi về từ OnePay.
+     * Phương thức hổ trợ tạo các thuộc tính của đối tượng từ dữ liệu gửi về từ VTCPay.
      *
      * @param  string  $name
      * @return null|string
@@ -31,7 +31,7 @@ trait ResponseProperties
     }
 
     /**
-     * Phương thức hổ trợ bảo vệ các thuộc tính của đối tượng từ dữ liệu gửi về từ OnePay.
+     * Phương thức hổ trợ bảo vệ các thuộc tính của đối tượng từ dữ liệu gửi về từ VTCPay.
      *
      * @param  string  $name
      * @param  mixed  $value
