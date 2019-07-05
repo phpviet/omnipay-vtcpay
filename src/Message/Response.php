@@ -29,6 +29,14 @@ class Response extends AbstractResponse
     /**
      * {@inheritdoc}
      */
+    public function isCancelled(): bool
+    {
+        return '-9' === $this->getCode();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function getMessage(): ?string
     {
         return $this->data['message'] ?? null;
