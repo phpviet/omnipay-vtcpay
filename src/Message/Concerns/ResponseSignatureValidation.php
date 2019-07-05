@@ -23,14 +23,19 @@ trait ResponseSignatureValidation
      */
     protected function validateSignature(): void
     {
-        $data = $this->getData();
+        $data = $dataSignature = $this->getData();
+
+        if (! isset($data['signature'])) {
+            throw new InvalidResponseException(sprintf('Response from VTCPay is invalid!'));
+        }
+
         $signature = new Signature(
             $this->getRequest()->getSecurityCode()
         );
-        $actual = $data['signature'];
-        unset($data['signature']);
 
-        if (! $signature->validate($data, $actual)) {
+        unset($dataSignature['signature']);
+
+        if (! $signature->validate($dataSignature, $data['signature'])) {
             throw new InvalidResponseException(sprintf('Data signature response from VTCPay is invalid!'));
         }
     }
