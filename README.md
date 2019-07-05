@@ -41,8 +41,10 @@ hoặc nếu bạn muốn sử dụng không dựa trên framework thì tiếp t
 use Omnipay\Omnipay;
 
 $gateway = Omnipay::create('VTCPay');
-$gateway->setWebsiteId('Do VTCPay cấp');
-$gateway->setSecurityCode('Do VTCPay cấp');
+$gateway->initialize([
+    'website_id' => 'Do VTCPay cấp',
+    'security_code' => 'Do VTCPay cấp',
+]);
 ```
 
 Gateway khởi tạo ở trên dùng để tạo các yêu cầu xử lý đến VTCPay hoặc dùng để nhận yêu cầu do VTCPay gửi đến.
